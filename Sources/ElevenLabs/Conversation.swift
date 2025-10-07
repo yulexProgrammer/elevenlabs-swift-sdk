@@ -806,10 +806,12 @@ private final class ConversationDataDelegate: RoomDelegate, @unchecked Sendable 
     init(onData: @escaping (Data) -> Void) {
         self.onData = onData
     }
-
-    func room(
-        _: Room, participant _: RemoteParticipant?, didReceiveData data: Data, forTopic _: String
-    ) {
+    
+    func room(_ room: Room,
+              participant: RemoteParticipant,
+              didReceiveData data: Data,
+              forTopic topic: String?,
+              encryptionType: EncryptionType) {
         onData(data)
     }
 }
